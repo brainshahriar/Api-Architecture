@@ -15,7 +15,7 @@ app.use(cors())
 app.use(bodyParser.json())
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/public',express.static('./uploads'));
+app.use('/public',express.static('./public/uploads'));
 
 // Database Connection
 connectDB(DATABASE_URL)
