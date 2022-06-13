@@ -8,6 +8,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import Register from './components/Register';
 
 const App:React.FC = ()=> {
   return (
@@ -16,6 +17,8 @@ const App:React.FC = ()=> {
     <Router>
         <Routes>
             <Route  path="/" element={<Home/>}/>
+            <Route  path="/home" element={<Home/>}/>
+            <Route  path="/register" element={<Register/>}/>
           </Routes>
       </Router>
     </div>

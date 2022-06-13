@@ -6,7 +6,8 @@ import axios from "axios";
 const Home: React.FC = () => {
   const [userData, setuserData] = useState<any[]>([]);
 
-  useEffect(() => {
+
+  const getData = ()=>{
     axios
       .get("http://localhost:8000/api/user/getall")
       .then((result) => {
@@ -16,9 +17,23 @@ const Home: React.FC = () => {
       .catch((error) => {
         console.log(error.message);
       });
+  }
+
+  useEffect(() => {
+    getData();
   }, []);
 
-  
+  const deleteRecord = (id:any)=>{
+      axios
+      .delete(`http://localhost:8000/api/user/delete/${id}`)
+      .then((result)=>{
+          alert("Deleted")
+      })
+      .catch((error)=>{
+        alert(error.message)
+      })
+      getData()
+  }
 
 
   return (
@@ -61,7 +76,7 @@ const Home: React.FC = () => {
                           {" "}
                           <button className="btn btn-success">View</button>
                         </Link>
-                        <Link className="btn btn-primary" to="">
+                        <Link className="btn btn-primary" to="/">
                           {" "}
                           Edit
                         </Link>
@@ -72,7 +87,7 @@ const Home: React.FC = () => {
                               "Do you really want to delete " + element.title
                             );
                             if (confirmBox === true) {
-                              // deleteRecord(element._id)
+                              deleteRecord(element._id)
                             }
                           }}
                         >

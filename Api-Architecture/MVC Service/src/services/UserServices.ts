@@ -24,7 +24,7 @@ class userService {
     let newUser = req.body;
     if (req.file && req.file.filename) {
       const img: any = await userModel.findById(req.params.id);
-      fs.unlink("./uploads/" + img.image, (err) => {
+      fs.unlink("./public/uploads/" + img.image, (err) => {
         if (err) {
           console.log(err);
         }
@@ -39,7 +39,7 @@ class userService {
 
   static delete = async (req: Request, res: Response) => {
     const img: any = await userModel.findById(req.params.id);
-    fs.unlink("./uploads/" + img.image, (err) => {
+    fs.unlink("./public/uploads/" + img.image, (err) => {
       if (err) {
         console.log(err);
       }
