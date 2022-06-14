@@ -60,7 +60,7 @@ const Home: React.FC = () => {
                     <tr key={id}>
                       <th scope="row">{id + 1}</th>
                       <td>{element.title}</td>
-                      <td>dsfsdf</td>
+                      <td>{element.description}</td>
                       <td>
                         <img
                           alt=""

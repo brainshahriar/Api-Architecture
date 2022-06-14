@@ -16,9 +16,9 @@ const Register: React.FC = () => {
     description: "",
   });
 
-  const getData = async () => {
+  const getData = async (userId:any) => {
     await axios
-      .get(`http://localhost:8000/api/user/getall/${id}`)
+      .get(`http://localhost:8000/api/user/getall/${userId}`)
       .then((result) => {
         setDefaultData(result.data.result);
         setImgPreview(result.data.result?.image);
@@ -29,9 +29,8 @@ const Register: React.FC = () => {
   };
 
   useEffect(() => {
-    getData();
+    getData(id);
   }, [id]);
-  // console.log(defaultData && defaultData);
   const handleData = (e: any) => {
     const { name, value } = e.target;
     setValue((val) => {
@@ -53,10 +52,9 @@ const Register: React.FC = () => {
     if (postValue.description) {
       formTable.append("description", postValue.description);
     }
-    if (image) {
+    if (image.name) {
       formTable.append("image", image);
     }
-
     const createTable = async () => {
       await axios({
         method: "post",
@@ -83,12 +81,41 @@ const Register: React.FC = () => {
 
     navigate("/home");
   };
+
+  console.log(postValue,image);
+  
+  const handleUpdate = (e:any)=>{
+    e.preventDefault();
+    let formTable = new FormData();
+    if (postValue.title) {
+      formTable.append("title", postValue.title);
+    }
+    if (postValue.description) {
+      formTable.append("description", postValue.description);
+    }
+    if (image.name) {
+      formTable.append("image", image);
+     }
+    const updateTable = async () => {
+      await axios({
+        method: "put",
+        url: `http://localhost:8000/api/user/update/${id}`,
+        data: formTable,
+        headers: {
+          "Content-Type": `multipart/form-data`,
+        },
+      })
+    };
+    updateTable();
+    alert("Updated");
+    navigate("/home");
+  }
   return (
     <>
       <div className="container">
         <Navbar />
         <NavLink to="/">home</NavLink>
-        <form className="mt-4" id="myform" onSubmit={handleSubmit}>
+        <form className="mt-4" id="myform" onSubmit={defaultData ? handleUpdate : handleSubmit}>
           <div className="row">
             <div className="mb-3 col-lg-6 col-md-6 col-12">
               <label className="form-label">Title</label>
