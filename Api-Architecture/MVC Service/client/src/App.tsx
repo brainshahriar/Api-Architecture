@@ -9,6 +9,7 @@ import {
   Routes,
 } from "react-router-dom";
 import Register from './components/Register';
+import View from './components/View';
 
 const App:React.FC = ()=> {
   return (
@@ -20,6 +21,7 @@ const App:React.FC = ()=> {
             <Route  path="/home" element={<Home/>}/>
             <Route  path="/register" element={<Register/>}/>
             <Route  path="/register/:id" element={<Register/>}/>
+            <Route  path="/view/:id" element={<View/>}/>
           </Routes>
       </Router>
     </div>

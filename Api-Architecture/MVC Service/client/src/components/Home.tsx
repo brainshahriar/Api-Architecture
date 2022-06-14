@@ -69,7 +69,7 @@ const Home: React.FC = () => {
                         />
                       </td>
                       <td className="d-flex justify-content-between">
-                        <Link to="">
+                        <Link to={`/view/${element._id}`}>
                           {" "}
                           <button className="btn btn-success">View</button>
                         </Link>
