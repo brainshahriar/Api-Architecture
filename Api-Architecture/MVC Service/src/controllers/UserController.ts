@@ -30,9 +30,9 @@ class userController {
     try {
       const test = await userService.getById(req, res);
       if (test) {
-        return res.send({ Data: test });
+        return res.send({ result: test });
       } else {
-        return res.send({ Data: "Not found" });
+        return res.send({ result: "Not found" });
       }
     } catch (error) {
       console.log(error);

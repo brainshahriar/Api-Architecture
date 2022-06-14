@@ -6,8 +6,8 @@ import axios from "axios";
 const Home: React.FC = () => {
   const [userData, setuserData] = useState<any[]>([]);
 
-  const getData = () => {
-    axios
+  const getData = async() => {
+    await axios
       .get("http://localhost:8000/api/user/getall")
       .then((result) => {
         setuserData(result.data.result);
@@ -21,8 +21,8 @@ const Home: React.FC = () => {
     getData();
   }, []);
 
-  const deleteRecord = (id: any) => {
-    axios
+  const deleteRecord = async(id: any) => {
+    await axios
       .delete(`http://localhost:8000/api/user/delete/${id}`)
       .then((result) => {
         alert("Deleted");
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
                           {" "}
                           <button className="btn btn-success">View</button>
                         </Link>
-                        <Link className="btn btn-primary" to="/">
+                        <Link className="btn btn-primary" to={`/register/${element._id}`}>
                           {" "}
                           Edit
                         </Link>

@@ -26,3 +26,18 @@
 .right_view span{
   font-weight: 400;
 }
+.image-div{
+  width: 200px;
+  height: 150px;
+  border: 1px dashed lightgray;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.previewImg{
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+}
