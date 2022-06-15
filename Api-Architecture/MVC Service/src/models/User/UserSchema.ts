@@ -6,7 +6,13 @@ const userSchema = new mongoose.Schema({
         description: { type: String, required: true, trim: true },
         image:{
             type:String,
-        }
+        },
+        questions:[
+            {
+                type:mongoose.Types.ObjectId,
+                ref:"question"
+            }
+        ]
 })
 
 const userModel = mongoose.model<User>("user",userSchema)

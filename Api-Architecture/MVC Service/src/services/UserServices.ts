@@ -17,7 +17,7 @@ class userService {
 
   static getById = async (req: Request, res: Response) => {
     const id = req.params.id;
-    return await userModel.findOne({ _id: id }).exec();
+    return await userModel.findOne({ _id: id }).populate('questions').exec();
   };
 
   static updateUser = async (req: Request, res: Response) => {
