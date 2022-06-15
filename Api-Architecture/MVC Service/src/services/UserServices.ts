@@ -1,6 +1,6 @@
 import userModel from "../models/User/UserSchema";
 import fs from "fs";
-import { Request, Response } from "express";
+import { Request, Response } from "express"; 
 
 class userService {
   static getAllUser = async () => {

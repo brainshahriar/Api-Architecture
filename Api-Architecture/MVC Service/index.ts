@@ -4,6 +4,7 @@ import express from 'express'
 import cors from 'cors';
 import connectDB from './config/connectdb'
 import userRoutes from './src/routes/UserRoutes'
+import questionRoutes from './src/routes/QuestionRoutes'
 import bodyParser from 'body-parser'
 
 const app = express()
@@ -13,7 +14,7 @@ const DATABASE_URL:any = process.env.DATABASE_URL
 // CORS Policy
 app.use(cors())
 app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/public',express.static('./public/uploads'));
 
@@ -26,6 +27,7 @@ connectDB(DATABASE_URL)
 
 // Load Routes
 app.use("/api/user",userRoutes )
+app.use("/api/question",questionRoutes)
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)

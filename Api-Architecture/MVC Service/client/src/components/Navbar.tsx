@@ -16,7 +16,6 @@ const Navbar:React.FC = () => {
                             <li className="nav-item">
                             <Link className="navbar-brand" to="/">Home</Link>
                             </li>
-                          
                         </ul>
                         <form className="d-flex">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

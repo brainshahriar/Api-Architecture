@@ -1,6 +1,7 @@
 import express from 'express'
 import multer from 'multer';
 import path from 'path';
+import questionController from '../controllers/QuestionController';
 import userController from '../controllers/UserController';
 const router = express.Router();
 
@@ -25,6 +26,9 @@ router.get('/getall',userController.get)
 router.get('/getall/:id',userController.getByid)
 router.put('/update/:id',upload,userController.update)
 router.delete('/delete/:id',userController.delete)
+
+//question routes
+// router.post('/question/post',questionController.questionPost)
 
 // router.patch('/todoupdate/:id',upload,todoController.updateTodo)
 

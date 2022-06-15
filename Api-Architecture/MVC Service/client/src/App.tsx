@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Register from './components/Register';
 import View from './components/View';
+import Question from './components/Question';
 
 const App:React.FC = ()=> {
   return (
@@ -22,6 +23,7 @@ const App:React.FC = ()=> {
             <Route  path="/register" element={<Register/>}/>
             <Route  path="/register/:id" element={<Register/>}/>
             <Route  path="/view/:id" element={<View/>}/>
+            <Route  path="/question/:id" element={<Question/>}/>
           </Routes>
       </Router>
     </div>

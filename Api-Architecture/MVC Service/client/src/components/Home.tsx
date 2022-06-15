@@ -77,6 +77,10 @@ const Home: React.FC = () => {
                           {" "}
                           Edit
                         </Link>
+                        <Link className="btn btn-primary" to={`/question/${element._id}`}>
+                          {" "}
+                          Add Question
+                        </Link>
                         <button
                           className="btn btn-danger"
                           onClick={() => {

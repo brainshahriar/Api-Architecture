@@ -18,7 +18,6 @@ const View:React.FC = () => {
         })
 
     }
-
     useEffect(() => {
         view(id);
     }, [id])
@@ -26,8 +25,8 @@ const View:React.FC = () => {
         <div>
             {
                 userData && <div>
-                    <h3>{userData?.title}</h3>
-                    <p>{userData?.description}</p>
+                    <h3>Ttile : {userData?.title}</h3>
+                    <p>Description : {userData?.description}</p>
                     <img className="previewImg" src={`http://localhost:8000/public/${userData?.image}`} alt="" />
                 </div>
             }
