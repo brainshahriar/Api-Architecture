@@ -12,7 +12,6 @@ const View: React.FC = () => {
       .get(`http://localhost:8000/api/user/getall/${userId}`)
       .then((result) => {
         setuserData(result.data.result);
-        console.log(result.data.result.questions[0].name);
       })
       .catch((error) => {
         console.log(error);
@@ -21,7 +20,6 @@ const View: React.FC = () => {
   useEffect(() => {
     view(id);
   }, [id]);
-  console.log(userData?.questions);
   return (
     <>
       <Navbar />
@@ -39,8 +37,8 @@ const View: React.FC = () => {
               />
             </div>
             {userData?.questions &&
-              userData.questions.map((question: any) => (
-                <div>
+              userData.questions.map((question: any,i:any) => (
+                <div key={i}>
                   <h3>{question.name}</h3>
                   <h5>{question.type}</h5>
                 </div>

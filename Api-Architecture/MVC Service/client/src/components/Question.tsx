@@ -2,33 +2,44 @@ import React, {useState } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addQuestion } from "../features/questionSlice";
+import { RootState } from "../features/store";
 
 const Question:React.FC = () => {
+
+  const count = useSelector((state: RootState) => state.question)
+  console.log(count);
+  
+  const dispatch = useDispatch();
     let navigate = useNavigate();
     let { id } = useParams();
-    const [postValue, setValue] = useState({
+    const [postValue, setValue] = useState<any>({
       name: "",
       type: "",
     });
   
     const handleData = (e: any) => {
       const { name, value } = e.target;
-      setValue((val) => {
+      setValue((val:any) => {
         return {
           ...val,
           [name]: value,
         };
       });
+      dispatch(addQuestion(postValue))
     };
   
   
     const handleSubmit = (e: any) => {
       e.preventDefault();
+      dispatch(addQuestion(postValue))
       const data:any = {
           name:postValue.name,
           type:postValue.type,
           user:id
       }
+
       console.log(data);
       
       const createTable = async () => {
