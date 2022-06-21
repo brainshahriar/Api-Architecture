@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { addQuestion } from "../features/questionSlice";
-import { RootState } from "../features/store";
+
 
 const Home: React.FC = () => {
+
   const [userData, setuserData] = useState<any[]>([]);
 
   const getData = async() => {

@@ -2,16 +2,24 @@ import React, { useEffect, useState, useRef } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../features/userSlice";
+import { RootState } from "../features/store";
 const createObjectURL = require("create-object-url");
 
+
 const Register: React.FC = () => {
+
+  const count = useSelector((state: RootState) => state.user)
+  console.log(count);
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   let { id } = useParams();
   const imageRef = useRef<HTMLInputElement>(null);
   const [defaultData, setDefaultData] = useState<any>({});
   const [imgPreview, setImgPreview] = useState<any>("");
 
-  const [postValue, setValue] = useState({
+  const [postValue, setValue] = useState<any>({
     title: "",
     description: "",
   });
@@ -33,12 +41,13 @@ const Register: React.FC = () => {
   }, [id]);
   const handleData = (e: any) => {
     const { name, value } = e.target;
-    setValue((val) => {
+    setValue((val:any) => {
       return {
         ...val,
         [name]: value,
       };
     });
+    dispatch(addUser(postValue))
   };
 
   const [image, setImage] = useState<any>({});
@@ -80,6 +89,8 @@ const Register: React.FC = () => {
     //   setImage({})
 
     navigate("/home");
+    dispatch(addUser(postValue))
+    dispatch(addUser(image))
   };
 
   console.log(postValue,image);
