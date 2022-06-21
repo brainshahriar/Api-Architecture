@@ -10,7 +10,7 @@ export interface QuestionState {
     name:"",
     type:"",
     user:""
-  }
+  } 
 
  const questionSlice = createSlice({
       name:'questions',
