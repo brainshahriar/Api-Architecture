@@ -16,7 +16,7 @@ export interface QuestionState {
       name:'questions',
       initialState,
       reducers:{
-          addQuestion : (state, action)=>{
+          addQuestion : (state:any,  action:PayloadAction<string>)=>{
               state=action.payload;
           }
       }
